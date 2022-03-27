@@ -17,7 +17,7 @@ class UserScreen extends StatelessWidget {
       backgroundColor: Colors.white,
       appBar: AppBar(
         title: Text(
-          'bigfatcat0725@gmail.com',
+          userCat.email,
           style: TextStyle(
             color: Colors.black,
             fontSize: 18,

@@ -14,6 +14,13 @@ class LikeScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+        title: Text(
+          'Your Like List (${userCat.likes.length})',
+          style: TextStyle(
+            color: Colors.black,
+            fontSize: 18,
+          ),
+        ),
         elevation: 0,
         backgroundColor: Colors.white,
         leading: IconButton(

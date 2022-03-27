@@ -1,6 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_360/models/place.dart';
 import 'package:flutter_360/screens/place_screen.dart';
+import 'package:flutter_360/screens/shop_screen.dart';
 import 'package:flutter_360/screens/user_screen.dart';
 import 'package:get/get.dart';
 
@@ -37,6 +39,13 @@ class HomeScreen extends StatelessWidget {
           IconButton(
             onPressed: () {},
             icon: const Icon(Icons.filter_alt_outlined),
+            color: Colors.black,
+          ),
+          IconButton(
+            onPressed: () {
+              Get.to(() => ShopScreen());
+            },
+            icon: const Icon(CupertinoIcons.bitcoin_circle),
             color: Colors.black,
           ),
           IconButton(
