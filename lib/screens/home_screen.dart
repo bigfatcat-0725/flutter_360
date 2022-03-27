@@ -11,6 +11,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.white,
@@ -55,7 +56,7 @@ class HomeScreen extends StatelessWidget {
         ),
       ),
       body: Container(
-        color: Colors.white,
+        decoration: BoxDecoration(),
         padding: const EdgeInsets.symmetric(
           horizontal: 16,
         ),
@@ -63,10 +64,11 @@ class HomeScreen extends StatelessWidget {
             itemCount: placeList.length,
             separatorBuilder: (context, index) => const Divider(),
             itemBuilder: (context, index) => InkWell(
+                  borderRadius: BorderRadius.circular(10),
                   onTap: () {
                     Get.to(() => PlaceScreen(place: placeList[index]));
                   },
-                  child: Container(
+                  child: Ink(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                     ),
@@ -100,12 +102,6 @@ class HomeScreen extends StatelessWidget {
                               ),
                               const SizedBox(
                                 height: 4,
-                              ),
-                              Text(
-                                placeList[index].description,
-                                style: const TextStyle(
-                                  fontSize: 14,
-                                ),
                               ),
                               const SizedBox(
                                 height: 8,

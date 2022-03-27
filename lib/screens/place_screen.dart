@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_360/controllers/coin_controller.dart';
+import 'package:flutter_360/controllers/like_controller.dart';
 import 'package:flutter_360/models/place.dart';
 import 'package:flutter_360/screens/place_detail_screen.dart';
 import 'package:get/get.dart';
@@ -7,7 +9,9 @@ import 'package:panorama/panorama.dart';
 
 class PlaceScreen extends StatelessWidget {
   final Place place;
-  const PlaceScreen({Key? key, required this.place}) : super(key: key);
+  final CoinController coinController = CoinController();
+  final LikeController likeController = LikeController();
+  PlaceScreen({Key? key, required this.place}) : super(key: key);
 
   Widget hotspotButton(
       {String? text, IconData? icon, VoidCallback? onPressed}) {
@@ -46,6 +50,7 @@ class PlaceScreen extends StatelessWidget {
     );
 
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.white,
@@ -71,7 +76,7 @@ class PlaceScreen extends StatelessWidget {
             ClipRRect(
               child: SizedBox(
                 width: double.infinity,
-                height: size.height * 0.6,
+                height: size.height * 0.625,
                 child: Panorama(
                   child: Image.asset(place.imgUrl),
                   hotspots: [
@@ -83,10 +88,12 @@ class PlaceScreen extends StatelessWidget {
                         widget: hotspotButton(
                             icon: Icons.currency_bitcoin,
                             onPressed: () {
+                              coinController.increment();
                               Get.snackbar(
                                 'Congratulations!',
                                 'add 1 coin',
                                 snackPosition: SnackPosition.BOTTOM,
+                                duration: const Duration(seconds: 1),
                               );
                             }))
                   ],
@@ -95,7 +102,9 @@ class PlaceScreen extends StatelessWidget {
             ),
             InkWell(
               onTap: () {
-                Get.to(() => PlaceDetailScreen());
+                Get.to(() => PlaceDetailScreen(
+                      place: place,
+                    ));
               },
               child: Container(
                 padding:
@@ -136,15 +145,22 @@ class PlaceScreen extends StatelessWidget {
       ),
       bottomNavigationBar: BottomAppBar(
         child: SizedBox(
-          height: 50,
+          height: 60,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: const [
-              Icon(
-                CupertinoIcons.heart,
-                color: Colors.red,
-                size: 30,
-              ),
+            children: [
+              Obx(() => IconButton(
+                    onPressed: () {
+                      like.contains(place.title)
+                          ? likeController.offLike(place.title)
+                          : likeController.onLike(place.title);
+                    },
+                    icon: like.contains(place.title)
+                        ? Icon(CupertinoIcons.heart_fill)
+                        : Icon(CupertinoIcons.heart),
+                    color: Colors.red,
+                    iconSize: 30,
+                  )),
             ],
           ),
         ),
