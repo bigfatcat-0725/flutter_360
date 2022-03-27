@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_360/models/place.dart';
 import 'package:flutter_360/screens/place_screen.dart';
@@ -93,6 +92,11 @@ class HomeScreen extends StatelessWidget {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
+                              if (placeList[index].newPlace)
+                                Text(
+                                  'new',
+                                  style: TextStyle(color: Colors.orange),
+                                ),
                               Text(
                                 placeList[index].title,
                                 style: const TextStyle(

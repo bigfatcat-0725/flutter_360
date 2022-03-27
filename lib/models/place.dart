@@ -11,6 +11,7 @@ class Place {
   double latitude;
   double longitude;
   String detail;
+  bool newPlace;
 
   Place({
     required this.imgUrl,
@@ -21,6 +22,7 @@ class Place {
     required this.latitude,
     required this.longitude,
     required this.detail,
+    this.newPlace = false,
   });
 }
 
@@ -34,6 +36,7 @@ List<Place> placeList = [
     latitude: -100,
     longitude: 20,
     detail: text,
+    newPlace: true,
   ),
   Place(
     imgUrl: 'assets/360-2.jpg',
@@ -44,6 +47,7 @@ List<Place> placeList = [
     latitude: -50,
     longitude: 50,
     detail: text,
+    newPlace: true,
   ),
   Place(
     imgUrl: 'assets/360-3.jpg',

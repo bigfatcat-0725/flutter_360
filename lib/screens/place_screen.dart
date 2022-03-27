@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_360/controllers/coin_controller.dart';
 import 'package:flutter_360/controllers/like_controller.dart';
 import 'package:flutter_360/models/place.dart';
+import 'package:flutter_360/models/user.dart';
 import 'package:flutter_360/screens/place_detail_screen.dart';
 import 'package:get/get.dart';
 import 'package:panorama/panorama.dart';
@@ -76,7 +77,7 @@ class PlaceScreen extends StatelessWidget {
             ClipRRect(
               child: SizedBox(
                 width: double.infinity,
-                height: size.height * 0.625,
+                height: size.height * 0.60,
                 child: Panorama(
                   child: Image.asset(place.imgUrl),
                   hotspots: [
@@ -151,11 +152,11 @@ class PlaceScreen extends StatelessWidget {
             children: [
               Obx(() => IconButton(
                     onPressed: () {
-                      like.contains(place.title)
-                          ? likeController.offLike(place.title)
-                          : likeController.onLike(place.title);
+                      userCat.likes.contains(place.title)
+                          ? likeController.offLike(place)
+                          : likeController.onLike(place);
                     },
-                    icon: like.contains(place.title)
+                    icon: userCat.likes.contains(place.title)
                         ? Icon(CupertinoIcons.heart_fill)
                         : Icon(CupertinoIcons.heart),
                     color: Colors.red,

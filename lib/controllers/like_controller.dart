@@ -1,21 +1,16 @@
+import 'package:flutter_360/models/user.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 
-final likeBox = GetStorage();
-var like = List.empty().obs;
+// 유저의 정보에 들어감
 
 class LikeController extends GetxController {
-  onLike(String place) {
-    like.add(place);
-    print(like);
-    likeBox.write('likes', like);
-    update();
+  onLike(place) {
+    userCat.likes.add(place.title);
+    userCat.likePlaces.add(place.thumbnail);
   }
 
-  offLike(String place) {
-    like.remove(place);
-    print(like);
-    likeBox.write('likes', like);
-    update();
+  offLike(place) {
+    userCat.likes.remove(place.title);
+    userCat.likePlaces.remove(place.thumbnail);
   }
 }

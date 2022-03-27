@@ -1,11 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_360/controllers/coin_controller.dart';
+import 'package:flutter_360/controllers/like_controller.dart';
+import 'package:flutter_360/models/user.dart';
 import 'package:flutter_360/screens/like_screen.dart';
 import 'package:get/get.dart';
 
 class UserScreen extends StatelessWidget {
   final CoinController coinController = CoinController();
+  final LikeController likeController = LikeController();
   UserScreen({Key? key}) : super(key: key);
 
   @override
@@ -61,7 +64,7 @@ class UserScreen extends StatelessWidget {
                       const SizedBox(
                         height: 10,
                       ),
-                      Text(box.read('coins').toString()),
+                      Text(userCat.coin.toString()),
                     ],
                   ),
                 ),
@@ -82,7 +85,7 @@ class UserScreen extends StatelessWidget {
                       SizedBox(
                         height: 10,
                       ),
-                      Text('0'),
+                      Obx(() => Text(userCat.likes.length.toString())),
                     ],
                   ),
                 ),
