@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_360/screens/home_screen.dart';
+import 'package:flutter_360/screens/auth/login_screen.dart';
 import 'package:get/get.dart';
 
 Future<void> main() async {
@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: '360 HOTPLACE',
-      home: HomeScreen(),
+      home: LoginScreen(),
     );
   }
 }

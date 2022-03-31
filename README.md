@@ -4,3 +4,5 @@
 - 파노라마 이미지에 코인을 숨겨둠. 채굴 느낌 ㅋㅋㅋ.
 
 ![123](assets/123.gif)
+![login](assets/login.png)
+

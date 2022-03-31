@@ -37,7 +37,7 @@ class UserScreen extends StatelessWidget {
         child: Column(
           children: [
             SizedBox(
-              height: MediaQuery.of(context).size.width * 0.5,
+              height: MediaQuery.of(context).size.height * 0.3,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
